@@ -1,0 +1,69 @@
+@font-face {
+  font-family: "Barcode";
+  src: url("../public/font/Libre_Barcode_39_Text/LibreBarcode39Text-Regular.ttf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.active {
+  @apply px-5 py-2 text-white rounded-full;
+}
+
+.deactive {
+  @apply px-3 py-2 rounded-full hover:bg-blue-500 hover:text-white duration-300 cursor-pointer;
+}
+
+.chat-body {
+  position: relative;
+  /* overflow: hidden; */
+}
+
+/* Add animated shadow effect */
+
+.chat-body:after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 0px;
+  width: calc(100%);
+  height: calc(100% + 20px);
+  background: var(--gradient-shadow);
+  background-size: 400%;
+  z-index: -1;
+  opacity: 0.3;
+  filter: blur(20px);
+  animation: animate-shadow 50s linear infinite;
+  border-radius: 30px; /* Match the card's border radius */
+}
+.chat-body::before {
+  content: "";
+  position: absolute;
+
+  width: calc(100% - 74px);
+  height: calc(100% + 6px);
+  background: var(--gradient-shadow);
+  background-size: 400%;
+  z-index: -1;
+  opacity: 0.9;
+  animation: animate-shadow 50s linear infinite;
+  border-radius: 30px; /* Match the card's border radius */
+}
+
+/* Gradient animation */
+@keyframes animate-shadow {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 300% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+/* Gradient colors */
+:root {
+  --gradient-shadow: linear-gradient(90deg, #0400fb, #ff1100, #d400ff, #0400fb);
+}
